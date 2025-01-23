@@ -19,17 +19,29 @@ public class ConfigLoader {
         }
     }
 
+    private static boolean checkIfPropertyIsNullOrIsEmpty(String key) {
+        return properties.getProperty(key) == null ||  properties.getProperty(key).equals(" ");
+    }
+
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
 
     public static int getIntProperty(String key) {
-        return Integer.parseInt(properties.getProperty(key));
+        return ( checkIfPropertyIsNullOrIsEmpty(key) )
+                ? 5000
+                : Integer.parseInt(properties.getProperty(key));
     }
 
     public static Properties getProperties() {
         return properties;
     }
 
+    public static boolean getBooleanProperty(String key) {
+//        return Boolean.parseBoolean(properties.getProperty(key));
+        return ( checkIfPropertyIsNullOrIsEmpty(key) )
+                ? false
+                : Boolean.parseBoolean(properties.getProperty(key));
+    }
 
 }

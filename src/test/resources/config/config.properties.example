@@ -1,5 +1,7 @@
 # Configuration settings for system behavior
 timeouts=
+
+# Select between DEV, QA, PROD
 environment=
 
 # Token settings for session expiration
@@ -17,3 +19,6 @@ generalUser.password=
 
 # Email domain configuration for generating random email addresses
 email.domain=
+
+# Execute all test cases
+test.execute=
