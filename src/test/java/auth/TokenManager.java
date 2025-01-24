@@ -1,6 +1,6 @@
 package auth;
 
-import config.ConfigLoader;
+import utils.ConfigUtility;
 
 import java.time.Instant;
 
@@ -12,7 +12,7 @@ public class TokenManager {
     private static Instant superVisorTokenGeneratedAt;
     private static Instant generalUserTokenGeneratedAt;
 
-    private static final long TOKEN_EXPIRATION_MINUTES = ConfigLoader.getIntProperty("token.expiration.minutes");
+    private static final long TOKEN_EXPIRATION_MINUTES = ConfigUtility.getTokenExpirationMinutes();
 
     public static String getSuperVisorToken() {
         if ( superVisorToken == null || isTokenExpired(superVisorTokenGeneratedAt) ) {

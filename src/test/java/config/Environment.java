@@ -1,8 +1,10 @@
 package config;
 
+import utils.ConfigUtility;
+
 public enum Environment {
-    DEV("https://bookstore.demoqa.com"),
-    QA("https://bookstore.demoqa.com"),
+    DEV("https://dev.bookstore.demoqa.com"),
+    QA("https://qa.bookstore.demoqa.com"),
     PROD("https://bookstore.demoqa.com");
 
     private final String baseUrl;
@@ -16,7 +18,6 @@ public enum Environment {
     }
 
     public static Environment getCurrentEnvironment() {
-       String env = ConfigLoader.getProperty("environment").toUpperCase();
-       return Environment.valueOf(env);
+       return Environment.valueOf(ConfigUtility.getEnvironment());
     }
 }
