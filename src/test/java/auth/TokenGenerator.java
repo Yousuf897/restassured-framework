@@ -34,7 +34,6 @@ public class TokenGenerator {
 
     public static String getGeneralUserToken() {
         String username = ConfigLoader.getProperty("generalUser.username");
-        System.out.println( username );
         String password = ConfigLoader.getProperty("generalUser.password");
         return generateToken(username, password);
     }
