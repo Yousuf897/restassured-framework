@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetBookStoreTests extends BaseTest {
 
@@ -27,10 +28,7 @@ public class GetBookStoreTests extends BaseTest {
 
         assertEquals(200, response.statusCode(), "Request failed.");
         assertEquals(response.jsonPath().getString("isbn"), isbn, "Request failed.");
-
-
-
-
+        assertNotNull(response.jsonPath().getString("isbn"),"ISBN is null.");
     }
 
 }
