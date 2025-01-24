@@ -16,4 +16,21 @@ public class GetBookStoreTests extends BaseTest {
         assertEquals(200, response.statusCode(), "Request failed.");
     }
 
+    @Test
+    public void testGetBookByISBN() {
+
+        String isbn = "9781449365035";
+
+        Response response = BookStoreAPI.getBookByISBN(isbn);
+
+        System.out.println("RESPONSE: " + response.asPrettyString());
+
+        assertEquals(200, response.statusCode(), "Request failed.");
+        assertEquals(response.jsonPath().getString("isbn"), isbn, "Request failed.");
+
+
+
+
+    }
+
 }

@@ -8,4 +8,5 @@ public class EndPoints {
 
     /* Book endpoints */
     public static final String GET_ALL_BOOKS = "/BookStore/v1/Books";
+    public static final String GET_BOOK_BY_ISBN = "/BookStore/v1/Book?ISBN=";
 }

@@ -12,4 +12,12 @@ public class BookStoreAPI {
                 .get(EndPoints.GET_ALL_BOOKS);
     }
 
+    public static Response getBookByISBN(String isbn) {
+        return RestAssured
+                .given()
+                .header("accept", "application/json")
+                .when()
+                .post(EndPoints.GET_BOOK_BY_ISBN + isbn);
+    }
+
 }
