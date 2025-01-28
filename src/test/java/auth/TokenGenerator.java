@@ -38,4 +38,8 @@ public class TokenGenerator {
         return generateToken(username, password);
     }
 
+    public static String getToken(String username, String password){
+        return generateToken(username, password);
+    }
+
 }
