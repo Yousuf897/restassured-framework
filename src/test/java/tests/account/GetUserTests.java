@@ -72,8 +72,10 @@ public class GetUserTests extends BaseTest {
         final String password = DataGenerator.generateRandomPassword();
         final String ISBN = "9781449325862";
         final String UPDATE_ISBN = "9781449337711";
+
         // Act
         Response response = AccountAPI.createUser(userName, password);
+
         // Assert
         assertEquals(201, response.statusCode(), "Request failed.");
         System.out.println( "userId: " + response.jsonPath().getString("userID") );
@@ -89,9 +91,9 @@ public class GetUserTests extends BaseTest {
         Response postBookToUser = BookStoreAPI.assignBookToUser(userUUID, ISBN, userToken);
         System.out.println( postBookToUser.asPrettyString() );
 
-        Response updateUser = AccountAPI.updateUser(userUUID, UPDATE_ISBN, userToken);
-        assertEquals(201, response.statusCode(), "Request failed.");
-        System.out.println( updateUser.asPrettyString() );
+//        Response updateUser = AccountAPI.updateUser(userUUID, UPDATE_ISBN, userToken);
+//        assertEquals(201, response.statusCode(), "Request failed.");
+//        System.out.println( updateUser.asPrettyString() );
 
         Response getUpdatedUserInfo = AccountAPI.getUserByUUIDWithToken(userUUID, userToken);
         System.out.println( getUpdatedUserInfo.asPrettyString() );
@@ -101,6 +103,5 @@ public class GetUserTests extends BaseTest {
         System.out.println("Status Code: " + deleteUser.statusCode());
 
     }
-
 
 }

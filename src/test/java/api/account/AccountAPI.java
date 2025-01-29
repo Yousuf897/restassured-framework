@@ -36,13 +36,15 @@ public class AccountAPI {
                 .post(EndPoints.CREATE_USER);
     }
 
-    public static Response updateUser(String uuid, String isbn, String token) {
-        String requestBody = "{ \"userId\": \"" + uuid + "\", \"isbn\": \"" + isbn + "\" }";
+    public static Response updateUser(String uuid, String oldIsbn, String newIsbn, String token) {
+        String requestBody = "{ \"userId\": \"" + uuid + "\", \"isbn\": \"" + newIsbn + "\" }";
         return RestAssured
                 .given()
                 .header("accept", "application/json")
                 .header("Authorization", "Bearer " + token)
-                .pathParam("ISBN", isbn)
+                .contentType(ContentType.JSON)
+                .body(requestBody)
+                .pathParam("OLD_ISBN", oldIsbn)
                 .put(EndPoints.UPDATE_BOOK_BY_ISBN);
     }
 

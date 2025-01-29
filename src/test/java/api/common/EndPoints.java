@@ -9,8 +9,9 @@ public class EndPoints {
     /* Book endpoints */
     public static final String GET_ALL_BOOKS = "/BookStore/v1/Books";
     public static final String GET_BOOK_BY_ISBN = "/BookStore/v1/Book?ISBN=";
-    public static final String UPDATE_BOOK_BY_ISBN = "/BookStore/v1/Books/{ISBN}";
+    public static final String UPDATE_BOOK_BY_ISBN = "/BookStore/v1/Books/{OLD_ISBN}";
     public static final String POST_BOOK_TO_USER = "/BookStore/v1/Books";
+    public static final String DELETE_BOOK__FROM_USER = "/BookStore/v1/Book";
 
     /* User endpoints */
     public static final String GET_USER_BY_UUID = "/Account/v1/User/{UUID}";
