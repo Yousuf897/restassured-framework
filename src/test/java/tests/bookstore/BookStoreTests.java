@@ -52,7 +52,7 @@ public class BookStoreTests extends BaseTest {
 
     @Test
     public void createUserTest() {
-        assertEquals(StatusCodes.TWO_ZERO_ZERO, response.statusCode(), ErrorMessages.REQUEST_FAILED);
+        assertEquals(StatusCodes.TWO_ZERO_ONE, response.statusCode(), ErrorMessages.REQUEST_FAILED);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class BookStoreTests extends BaseTest {
 
         /* Update the book that is being assigned to the user by passing new book ISBN and validate the request */
         Response updateUser = AccountAPI.updateUser(userUUID, BOOK_ONE_ISBN, UPDATE_ISBN , userToken);
-        assertEquals(StatusCodes.TWO_ZERO_ONE, updateUser.statusCode(), ErrorMessages.CREATE_USER_REQUEST_FAILED);
+        assertEquals(StatusCodes.TWO_ZERO_ZERO, updateUser.statusCode(), ErrorMessages.CREATE_USER_REQUEST_FAILED);
     }
 
     @Test
