@@ -5,6 +5,7 @@ import api.bookstore.BookStoreAPI;
 import auth.TokenGenerator;
 import auth.TokenManager;
 import base.BaseTest;
+import config.ConfigLoader;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import utils.DataGenerator;
@@ -32,8 +33,14 @@ public class GetUserTests extends BaseTest {
         // Arrange
         String userId = "78c586b0-5083-4c87-9fd7-65137ec69c9d";
         String userToken = TokenManager.getGeneralUserToken();
+
+
+        System.out.println("Username of the user trying to generate token: " + ConfigLoader.getProperty("generalUser.username"));
+        System.out.println("Password of the user trying to generate token: " + ConfigLoader.getProperty("generalUser.password"));
+
         // Act
         Response response = AccountAPI.getUserByUUIDWithToken(userId, userToken);
+
 
         // Assert
         assertEquals(200, response.statusCode(), "Request failed.");
