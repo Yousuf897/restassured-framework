@@ -2,6 +2,7 @@ package config;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 import java.util.Properties;
 
 public class ConfigLoader {
@@ -19,18 +20,24 @@ public class ConfigLoader {
         }
     }
 
-    private static boolean checkIfPropertyIsNullOrIsEmpty(String key) {
-        return properties.getProperty(key) == null ||  properties.getProperty(key).equals(" ");
-    }
+//    private static boolean checkIfPropertyIsNullOrIsEmpty(String key) {
+//        return getProperty(key) == null ||  getProperty(key).equals(" ");
+//    }
 
     public static String getProperty(String key) {
-        return properties.getProperty(key);
+        return Optional.ofNullable(System.getProperty(key))
+                        .or( () -> Optional.ofNullable(System.getenv(key)))
+                        .orElse(properties.getProperty(key));
+
     }
 
     public static int getIntProperty(String key) {
-        return ( checkIfPropertyIsNullOrIsEmpty(key) )
-                ? 5000
-                : Integer.parseInt(properties.getProperty(key));
+        String value = getProperty(key);
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Invalid format for integer value." + value + e);
+        }
     }
 
     public static Properties getProperties() {
@@ -38,10 +45,7 @@ public class ConfigLoader {
     }
 
     public static boolean getBooleanProperty(String key) {
-//        return Boolean.parseBoolean(properties.getProperty(key));
-        return ( checkIfPropertyIsNullOrIsEmpty(key) )
-                ? false
-                : Boolean.parseBoolean(properties.getProperty(key));
+        return Boolean.parseBoolean(getProperty(key));
     }
 
 }

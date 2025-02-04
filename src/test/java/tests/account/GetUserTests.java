@@ -30,9 +30,8 @@ public class GetUserTests extends BaseTest {
     public void getAuthorizedUserByUUID() {
 
         // Arrange
-        String userId = "befce4ac-a8fb-4c41-8da4-c9276cd4ad1e";
+        String userId = "78c586b0-5083-4c87-9fd7-65137ec69c9d";
         String userToken = TokenManager.getGeneralUserToken();
-
         // Act
         Response response = AccountAPI.getUserByUUIDWithToken(userId, userToken);
 
